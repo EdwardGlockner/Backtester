@@ -23,7 +23,7 @@ class MarketEvent {
 
 class SignalEvent {
 	public:
-		SignalEvent(std::string symbol, std::string datetime, std::string signal_type);
+		SignalEvent(std::string in_symbol, std::string in_datetime, std::string in_signal_type);
 		/* fix to datetime type*/
 		~SignalEvent();
 		std::string type;
@@ -37,7 +37,7 @@ class SignalEvent {
 
 class OrderEvent {
 	public:
-		OrderEvent(std::string symbol, std::string order_type, int quantity, std::string direction);
+		OrderEvent(std::string in_symbol, std::string in_order_type, int in_quantity, std::string in_direction);
 		~OrderEvent();
 		std::string type;
 		std::string symbol;
@@ -52,7 +52,7 @@ class OrderEvent {
 
 class FillEvent {
 	public:
-		FillEvent(std::string timeindex, std::string symbol, std::string exchange, int quantity, std::string direction, double fill_cost, std::string commision);
+		FillEvent(std::string in_timeindex, std::string in_symbol, std::string in_exchange, int in_quantity, std::string in_direction, double in_fill_cost, std::string in_commision);
 		~FillEvent();
 		std::string type;
 		std::string timeindex;
