@@ -20,48 +20,37 @@ except OSError as e:
     print("Error identifying operating system")
 
 clear()
+
 #--GET PARAMETERS-------------+
-print("------START DATE------")
-strt_year = int(input("Year: "))
-strt_month = int(input("Month: "))
-strt_day = int(input("Day: "))
+today = datetime.datetime.today().strftime('%Y-%m-%d')
 
-strt_dt = datetime.datetime(strt_year, strt_month, strt_day)
+# Get interval and period
+intervals = ["1m", "2m", "5m", "15m", "30m", "60m", "1d", "5d", "1wk", "1mo", "3mo"]
+periods = ["7d", "60d", "60d", "60d", "60d", "730d", "10000d", "10000d", "10000d", "10000d", "10000d"]
 
-print("\n------END DATE------")
-end_year = int(input("Year: "))
-end_month = int(input("Month: "))
-end_day = int(input("Day: "))
+print("Choose interval")
+print(f"Available options: 1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo")
 
-end_dt = datetime.datetime(end_year, end_month, end_day)
-
+interval = input("Interval: ")
+period = periods[intervals.index(interval)]
 clear()
 
+# Get ticker symbols
 tickers = []
-print("Select tickers. 'Q' to quit")
+print("Select tickers. 'q' to quit")
 while True:
     ticker = input("Input ticker: ")
-    if ticker == "Q":
+    if ticker == "q":
         break
     tickers.append(ticker)
+
 clear()
 
 #--START READING DATA------------+
 print("Reading stock information")
 for tick in tickers:
-    ticker = yf.Ticker(tick)
-    info = None
-    
-    """
-    try:
-        info = tick.info
-    except:
-        print(f"Cannot get info of {ticker}. Ticker probably does not exist")
-        continue
-    """
-    
-    data = yf.download(tickers = tick, period="7d", interval = "1m")
-    dataname = dirname + "/data/" + tick + "_" + str(strt_dt) + "to" + str(end_dt)
+    data = yf.download(tickers = tick, period=period, interval = interval)
+    dataname = dirname + "/data/" + tick + "_" + today + "_" + interval 
     dataname.strip()
     data.to_csv(dataname)
     print(f"Stock data for ticker {tick} finished reading")
