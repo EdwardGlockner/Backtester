@@ -78,6 +78,9 @@ void HistoricCSVDataHandler :: open_convert_csv_file() {
 	
 			line = "";
 		}
+		for (int j = 0; j < symbol_data[symbol_list[i]].size(); j++) {
+			symbol_data[symbol_list[i]][j].display();
+		}
 	}
 	
 }
