@@ -11,7 +11,7 @@ class Event {
 
 };
 
-class MarketEvent {
+class MarketEvent : public Event {
 	public: 
 		MarketEvent();
 		~MarketEvent();
@@ -21,7 +21,7 @@ class MarketEvent {
 
 };
 
-class SignalEvent {
+class SignalEvent : public Event {
 	public:
 		SignalEvent(std::string in_symbol, std::string in_datetime, std::string in_signal_type);
 		/* fix to datetime type*/
@@ -35,7 +35,7 @@ class SignalEvent {
 
 };
 
-class OrderEvent {
+class OrderEvent : public Event {
 	public:
 		OrderEvent(std::string in_symbol, std::string in_order_type, int in_quantity, std::string in_direction);
 		~OrderEvent();
@@ -50,7 +50,7 @@ class OrderEvent {
 
 };
 
-class FillEvent {
+class FillEvent :public Event {
 	public:
 		FillEvent(std::string in_timeindex, std::string in_symbol, std::string in_exchange, int in_quantity, std::string in_direction, double in_fill_cost, std::string in_commision);
 		~FillEvent();
