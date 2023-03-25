@@ -5,6 +5,7 @@ import os
 import sys
 import pandas_datareader as web
 import pandas as pd
+import numpy as np
 
 #--FIXING PATH----------------+
 sys.path.append(str(sys.path[0][:-14]))
@@ -36,13 +37,20 @@ period = periods[intervals.index(interval)]
 clear()
 
 # Get ticker symbols
-tickers = []
-print("Select tickers. 'q' to quit")
-while True:
-    ticker = input("Input ticker: ")
-    if ticker == "q":
-        break
-    tickers.append(ticker)
+print("1. All S&P 500 companies")
+print("2. Custom companies")
+choice = input("Choose 1 or 2: ")
+if choice == "1":
+    sp500 = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
+    tickers = np.array(sp500[0]['Symbol'])
+else:
+    tickers = []
+    print("Select tickers. 'q' to quit")
+    while True:
+        ticker = input("Input ticker: ")
+        if ticker == "q":
+            break
+        tickers.append(ticker)
 
 clear()
 
