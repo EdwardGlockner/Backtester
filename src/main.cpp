@@ -13,7 +13,5 @@ int main() {
 	HistoricCSVDataHandler data_test("test", "test", symbol_list);
 	data_test.open_convert_csv_file();
 
-	std::cout << "Done!" << std::endl;	
-
 	return 0;
 }
