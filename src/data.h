@@ -2,6 +2,10 @@
 #define DATA
 
 #include <iostream>
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <map>
 
 class DataHandler {
 	public:
@@ -17,14 +21,13 @@ class DataHandler {
 
 class HistoricCSVDataHandler : public DataHandler {
 	public:
-		HistoricCSVDataHandler(std::string in_event, std::string in_csv_path, std::string in_symbol_list, std::string in_source);
+		HistoricCSVDataHandler(std::string in_events, std::string in_csv_path, std::vector <std::string> in_symbol_list);
 		~HistoricCSVDataHandler();
-		std::string event;
+		std::string events;
 		std::string csv_path;
-		std::string symbol_list;
-		std::string source;
+		std::vector <std::string> symbol_list;	
 
-		void open_convert_csv_file(std::string source);
+		void open_convert_csv_file();
 		void get_new_data(std::string symbol);
 		void get_latest_data(std::string symbol, std::string num_obs);
 		void update_latest_data();
@@ -32,13 +35,42 @@ class HistoricCSVDataHandler : public DataHandler {
 		void parse_yahoo_csv(std::string symbol);
 
 	private:	
-		std::string symbol_data;
-		std::string symbol_dataframe;
-		std::string latest_symbol_data;
-		std::string all_data;
-		std::string continue_backtest;
-		std::string time_col;
-		std::string price_col;
+		/* Create a structure of our data, read from Yahoo Finance */
+		struct data_struct {
+		public:
+			data_struct(
+				std::string date,
+				double open,
+				double high,
+				double close,
+				double adjclose,
+				int volume
+			) {
+				Date = date;
+				Open = open;
+				High = high;
+				Close = close;
+				AdjClose = adjclose;
+				Volume = volume;
+			}
+			
+			// Function to write out all the data
+			void display() {
+				std::cout << "Close: " << Close << std::endl;
+			
+			}
+
+			std::string Date;
+			double Open;
+			double High;
+			double Close;
+			double AdjClose;
+			int Volume;
+		};
+
+		std::map <std::string, data_struct> symbol_data;
+		std::map <std::string, data_struct> latest_symbol_data;
+		bool continue_backtest;
 
 }; 
 
