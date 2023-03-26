@@ -11,6 +11,9 @@ DataHandler::~DataHandler() {
 
 /* CLASS HISTORICCSVDATAHANDLER */
 HistoricCSVDataHandler::HistoricCSVDataHandler(std::string in_events, std::string in_csv_path, std::vector <std::string> in_symbol_list) {
+	/*
+	 *
+	 */
 
 	events= in_events;
 	csv_path = in_csv_path;
@@ -20,10 +23,16 @@ HistoricCSVDataHandler::HistoricCSVDataHandler(std::string in_events, std::strin
 }
 
 HistoricCSVDataHandler::~HistoricCSVDataHandler() {
+	/*
+	 *
+	 */
 
 }
 
 void HistoricCSVDataHandler :: open_convert_csv_file() {
+	/*
+	 *
+	 */
 	
 	for (int i = 0; i < symbol_list.size(); i++) {
 		std::fstream inputFile;
@@ -78,6 +87,10 @@ void HistoricCSVDataHandler :: open_convert_csv_file() {
 	
 			line = "";
 		}
+
+		std::vector <data_struct> temp;
+		latest_symbol_data[symbol_list[i]] = temp;
+
 		for (int j = 0; j < symbol_data[symbol_list[i]].size(); j++) {
 			symbol_data[symbol_list[i]][j].display();
 		}
@@ -86,22 +99,51 @@ void HistoricCSVDataHandler :: open_convert_csv_file() {
 }
 
 void HistoricCSVDataHandler :: get_new_data(std::string symbol) {
+	/*
+	 *
+	 */
 
 }
 
-void HistoricCSVDataHandler :: get_latest_data(std::string symbol, std::string num_obs) {
-
+HistoricCSVDataHandler :: data_struct HistoricCSVDataHandler :: get_latest_data(std::string symbol, int num_obs) {
+	/*
+	 *
+	 */
+	try {
+		return latest_symbol_data[symbol][-num_obs];
+	}
+	catch (std::exception e) {
+		std::cout << symbol << " is not a valid symbol." << std::endl;
+		data_struct return_struct("", 0, 0, 0, 0, 0);
+		return return_struct;
+	}	
 }
 
 void HistoricCSVDataHandler :: update_latest_data() {
-
+	/*
+	 *
+	 */
+	/*for (int i = 0; i < symbol_list.size(); i++) {
+		try {
+			
+		}
+		catch {
+		
+		}
+	}*/
 }
 
 void HistoricCSVDataHandler :: create_baseline_dataframe() {
+	/*
+	 *
+	 */
 
 }
 
 void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
+	/*
+	 *
+	 */
 
 }
 

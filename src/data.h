@@ -51,7 +51,7 @@ class HistoricCSVDataHandler : public DataHandler {
 			
 			// Function to write out all the data
 			void display() {
-				std::cout << "Close: " << Close << std::endl;
+				std::cout << "Date: " << Date << std::endl;
 			
 			}
 
@@ -61,6 +61,7 @@ class HistoricCSVDataHandler : public DataHandler {
 			double Close;
 			double AdjClose;
 			int Volume;
+
 		};
 		std::map <std::string, std::vector <data_struct> > symbol_data;
 		std::map <std::string, std::vector <data_struct> > latest_symbol_data;		    
@@ -68,13 +69,10 @@ class HistoricCSVDataHandler : public DataHandler {
 
 		void open_convert_csv_file();
 		void get_new_data(std::string symbol);
-		void get_latest_data(std::string symbol, std::string num_obs);
+		data_struct get_latest_data(std::string symbol, int num_obs);
 		void update_latest_data();
 		void create_baseline_dataframe();
 		void parse_yahoo_csv(std::string symbol);
-
 }; 
-
-
 #endif
 
