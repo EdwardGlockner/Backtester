@@ -35,61 +35,8 @@ void HistoricCSVDataHandler :: open_convert_csv_file() {
 	 */
 	
 	for (int i = 0; i < symbol_list.size(); i++) {
-		std::fstream inputFile;
-		inputFile.open("/Users/edwardglockner/OneDrive - Uppsala universitet/Big Python Projects/Backtester/Data/YahooData/data/TSLA_2023-03-25_1m");
-
-		std::string line = "";
-		std::getline(inputFile, line);
-		line = "";
-
-		while (std::getline(inputFile, line)) {
-			std::string Date;
-			double Open;
-			double High;
-			double Close;
-			double AdjClose;
-			int Volume;
-
-			std::string tempString = "";
-
-			std::stringstream inputString(line);
-			
-			std::getline(inputString, Date, ',');
-
-			std::getline(inputString, tempString, ',');
-			Open = std::atof(tempString.c_str());
-			tempString = "";
-
-			std::getline(inputString, tempString, ',');
-			High = std::atof(tempString.c_str());
-			tempString = "";
-
-			std::getline(inputString, tempString, ',');
-			Close = std::atof(tempString.c_str());
-			tempString = "";
-
-			std::getline(inputString, tempString, ',');
-			AdjClose = std::atof(tempString.c_str());
-			tempString = "";
-
-			std::getline(inputString, tempString, ',');
-			Volume = std::atoi(tempString.c_str());
-
-			data_struct current_data(Date, Open, High, Close, AdjClose, Volume);
-
-    			if (symbol_data.find(symbol_list[i]) == symbol_data.end()) {
-				std::vector<data_struct> newVec;
-				newVec.push_back(current_data);
-        			symbol_data[symbol_list[i]] = newVec;
-    			} else {
-				symbol_data[symbol_list[i]].push_back(current_data);
-    			}
-	
-			line = "";
-		}
-
-		std::vector <data_struct> temp;
-		latest_symbol_data[symbol_list[i]] = temp;
+		parse_yahoo_csv(symbol_list[i]);
+		latest_index[symbol_list[i]] = 0;
 
 		for (int j = 0; j < symbol_data[symbol_list[i]].size(); j++) {
 			symbol_data[symbol_list[i]][j].display();
@@ -98,14 +45,19 @@ void HistoricCSVDataHandler :: open_convert_csv_file() {
 	
 }
 
-void HistoricCSVDataHandler :: get_new_data(std::string symbol) {
+HistoricCSVDataHandler :: Bar HistoricCSVDataHandler :: get_new_bar(std::string symbol) {
 	/*
 	 *
 	 */
-
+	data_struct temp_struct = symbol_data[symbol][latest_index[symbol]];
+	latest_index[symbol]++;
+	
+	struct Bar return_bar(symbol, temp_struct.Date, temp_struct.Open, temp_struct.High, temp_struct.Close, temp_struct.AdjClose, temp_struct.Volume);
+	
+	return return_bar;
 }
 
-HistoricCSVDataHandler :: data_struct HistoricCSVDataHandler :: get_latest_data(std::string symbol, int num_obs) {
+HistoricCSVDataHandler :: Bar HistoricCSVDataHandler :: get_latest_bars(std::string symbol, int num_obs) {
 	/*
 	 *
 	 */
@@ -114,36 +66,90 @@ HistoricCSVDataHandler :: data_struct HistoricCSVDataHandler :: get_latest_data(
 	}
 	catch (std::exception e) {
 		std::cout << symbol << " is not a valid symbol." << std::endl;
-		data_struct return_struct("", 0, 0, 0, 0, 0);
+
+		struct Bar return_struct("","",0,0,0,0,0);
+
 		return return_struct;
 	}	
 }
 
-void HistoricCSVDataHandler :: update_latest_data() {
+void HistoricCSVDataHandler :: update_bars(std::string symbol) {
 	/*
 	 *
 	 */
-	/*for (int i = 0; i < symbol_list.size(); i++) {
-		try {
-			
+	for (int i = 0; i < symbol_list.size(); i++) {
+		if (latest_index[symbol_list[i]] > symbol_data[symbol_list[i]].size()) {
+			continue_backtest = false;
 		}
-		catch {
-		
+		else {
+			struct Bar bar = get_new_bar(symbol_list[i]);
+			latest_symbol_data[symbol_list[i]].push_back(bar);
 		}
-	}*/
-}
 
-void HistoricCSVDataHandler :: create_baseline_dataframe() {
-	/*
-	 *
-	 */
+	}
 
 }
+
 
 void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
 	/*
 	 *
 	 */
+	std::fstream inputFile;
+	inputFile.open("/Users/edwardglockner/OneDrive - Uppsala universitet/Big Python Projects/Backtester/Data/YahooData/data/TSLA_2023-03-25_1m");
 
+	std::string line = "";
+	std::getline(inputFile, line);
+	line = "";
+
+	while (std::getline(inputFile, line)) {
+		std::string Date;
+		double Open;
+		double High;
+		double Close;
+		double AdjClose;
+		int Volume;
+
+		std::string tempString = "";
+
+		std::stringstream inputString(line);
+		
+		std::getline(inputString, Date, ',');
+
+		std::getline(inputString, tempString, ',');
+		Open = std::atof(tempString.c_str());
+		tempString = "";
+
+		std::getline(inputString, tempString, ',');
+		High = std::atof(tempString.c_str());
+		tempString = "";
+
+		std::getline(inputString, tempString, ',');
+		Close = std::atof(tempString.c_str());
+		tempString = "";
+
+		std::getline(inputString, tempString, ',');
+		AdjClose = std::atof(tempString.c_str());
+		tempString = "";
+
+		std::getline(inputString, tempString, ',');
+		Volume = std::atoi(tempString.c_str());
+
+		data_struct current_data(Date, Open, High, Close, AdjClose, Volume);
+
+		if (symbol_data.find(symbol) == symbol_data.end()) {
+			std::vector<data_struct> newVec;
+			newVec.push_back(current_data);
+			symbol_data[symbol] = newVec;
+		} else {
+			symbol_data[symbol].push_back(current_data);
+		}
+
+		line = "";
+	}
+
+	std::vector <Bar> temp;
+	latest_symbol_data[symbol] = temp;
+	
 }
 
