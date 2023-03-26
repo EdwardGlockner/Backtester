@@ -1,9 +1,0 @@
-# ninja log v5
-1	736	1679865860164199041	BackTester_autogen/timestamp	3f45953eecdefcba
-1	736	1679865860164199041	BackTester_autogen/mocs_compilation.cpp	3f45953eecdefcba
-1	736	1679865860164199041	/Users/edwardglockner/Library/CloudStorage/OneDrive-Uppsalauniversitet/Big Python Projects/Backtester/build-BackTester-Qt_6_4_1_for_macOS-Debug/BackTester_autogen/timestamp	3f45953eecdefcba
-1	736	1679865860164199041	/Users/edwardglockner/Library/CloudStorage/OneDrive-Uppsalauniversitet/Big Python Projects/Backtester/build-BackTester-Qt_6_4_1_for_macOS-Debug/BackTester_autogen/mocs_compilation.cpp	3f45953eecdefcba
-737	2994	1679865862434189611	CMakeFiles/BackTester.dir/BackTester_autogen/mocs_compilation.cpp.o	55a26b8761e196c0
-737	2997	1679865862434252085	CMakeFiles/BackTester.dir/main.cpp.o	750ea66493d67792
-737	3134	1679865862573638607	CMakeFiles/BackTester.dir/mainwindow.cpp.o	51fdba3f02a14670
-3134	3449	1679865862894663215	BackTester.app/Contents/MacOS/BackTester	598caf4254d29a8e
