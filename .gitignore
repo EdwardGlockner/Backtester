@@ -6,4 +6,4 @@ src/event.o
 src/main.o
 src/strategy_base.o
 .gitignore.swp
-
+src/.data.h.swp
