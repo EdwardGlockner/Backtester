@@ -37,10 +37,12 @@ void HistoricCSVDataHandler :: open_convert_csv_file() {
 	for (int i = 0; i < symbol_list.size(); i++) {
 		parse_yahoo_csv(symbol_list[i]);
 		latest_index[symbol_list[i]] = 0;
-
+		
+		/*
 		for (int j = 0; j < symbol_data[symbol_list[i]].size(); j++) {
 			symbol_data[symbol_list[i]][j].display();
-		}
+			}
+			*/
 	}
 	
 }
