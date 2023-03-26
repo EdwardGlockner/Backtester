@@ -1,1 +1,8 @@
-/build-BackTester-Qt_6_4_1_for_macOS-Debug
+build-BackTester-Qt_6_4_1_for_macOS-Debug
+src/BuyAndHold_Strategy.o
+src/data.o
+src/event.h.gch
+src/event.o
+src/main.o
+src/strategy_base.o
+
