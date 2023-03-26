@@ -1,6 +1,8 @@
 #include <iostream>
 #include "event.h"
 #include "data.h"
+#include "strategy_base.h"
+#include "BuyAndHold_Strategy.h"
 
 int main() {
 	// Testing event.h
