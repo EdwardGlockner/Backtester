@@ -16,7 +16,11 @@ int main() {
 	data_test.open_convert_csv_file();
 	HistoricCSVDataHandler::Bar temp = data_test.get_new_bar("test");
 	data_test.update_bars("test");
+	
+	// Testing strategy_base.h
+	
 
+	// Testing BuyAndHold_Strategy
 
 	return 0;
 }
