@@ -2,7 +2,7 @@
 #include "event.h"
 #include "data.h"
 #include "strategy_base.h"
-#include "BuyAndHold_Strategy.h"
+#include "BAH_strategy.h"
 
 int main() {
 	// Testing event.h
@@ -21,8 +21,8 @@ int main() {
 	Strategy_Base strat;
 
 	// Testing BuyAndHold_Strategy
-	BuyAndHold_Strategy BAH("test", "Test");
-	BAH.calculate_initial_bought();
+	//BuyAndHold_Strategy BAH("test", "Test");
+	//BAH.calculate_initial_bought();
 
 
 

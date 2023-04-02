@@ -10,6 +10,10 @@ DataHandler::~DataHandler() {
 }
 
 /* CLASS HISTORICCSVDATAHANDLER */
+HistoricCSVDataHandler::HistoricCSVDataHandler() {
+
+}
+
 HistoricCSVDataHandler::HistoricCSVDataHandler(std::string in_events, std::string in_csv_path, std::vector <std::string> in_symbol_list) {
 	/*
 	 *
