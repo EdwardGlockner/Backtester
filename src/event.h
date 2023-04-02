@@ -6,6 +6,7 @@ class Event {
 	public:
 		Event();
 		~Event();
+		std::string type;
 
 	private:
 
