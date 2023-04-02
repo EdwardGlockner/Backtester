@@ -22,8 +22,8 @@ std::map <std::string, bool> BuyAndHold_Strategy :: calculate_initial_bought() {
 
 }
 
-void BuyAndHold_Strategy :: calculate_signals(Event event) {
-	if (event.type == "MARKET") {
+void BuyAndHold_Strategy :: calculate_signals(Event* event) {
+	if (event->type == Event::MARKET_EVENT) {
 		for (int i = 0; i < symbol_list.size(); i++) {
 			struct HistoricCSVDataHandler::Bar latest_bars("", "",0,0,0,0,0);
 			latest_bars = bars.get_latest_bars(symbol_list[i], 1);

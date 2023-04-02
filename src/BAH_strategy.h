@@ -12,7 +12,7 @@ class BuyAndHold_Strategy : public Strategy_Base {
 		BuyAndHold_Strategy(HistoricCSVDataHandler in_bars, Event in_events);
 		~BuyAndHold_Strategy();
 		std::map <std::string, bool> calculate_initial_bought();
-		void calculate_signals(Event event);
+		void calculate_signals(Event* event);
 
 		HistoricCSVDataHandler bars;
 		std::vector <std::string> symbol_list;

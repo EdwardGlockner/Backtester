@@ -1,6 +1,6 @@
 
-output: main.o event.o data.o strategy_base.o BAH_strategy.o execution.o
-	c++ -std=c++17 main.o event.o data.o strategy_base.o BAH_strategy.o execution.o -o output
+output: main.o event.o data.o strategy_base.o BAH_strategy.o execution.o performance.o
+	c++ -std=c++17 main.o event.o data.o strategy_base.o BAH_strategy.o execution.o performance.o -o output
 
 main.o: main.cpp
 	c++ -std=c++17 -c main.cpp
@@ -19,6 +19,9 @@ BAH_strategy.o: BAH_strategy.cpp BAH_strategy.h
 
 execution.o: execution.cpp execution.h
 	c++ -std=c++17 -c execution.cpp
+
+performance.o: performance.cpp performance.h
+	c++ -std=c++17 -c performance.cpp
 
 clean: 
 	rm *.o output

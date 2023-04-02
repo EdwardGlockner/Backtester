@@ -3,6 +3,8 @@
 #include "data.h"
 #include "strategy_base.h"
 #include "BAH_strategy.h"
+#include "execution.h"
+#include "performance.h"
 
 int main() {
 	// Testing event.h
