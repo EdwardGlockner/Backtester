@@ -29,7 +29,7 @@ void BuyAndHold_Strategy :: calculate_signals(Event event) {
 			latest_bars = bars.get_latest_bars(symbol_list[i], 1);
 			if (bought[symbol_list[i]] == false) {
 				SignalEvent signal(latest_bars.Symbol, latest_bars.DateTime, "LONG");
-				events.put(signal);
+				//events.put(signal); should be <queue>
 				bought[symbol_list[i]] = true;
 			}	
 		}

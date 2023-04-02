@@ -12,7 +12,7 @@ Event::~Event() {
 
 /* CLASS MARKETEVENT */
 MarketEvent::MarketEvent() {
-	type = "MARKET";
+	type = "MARKET_EVENT";
 }
 
 MarketEvent::~MarketEvent() {
@@ -21,7 +21,7 @@ MarketEvent::~MarketEvent() {
 
 /* CLASS SIGNALEVENT */
 SignalEvent::SignalEvent(std::string in_symbol, std::string in_datetime, std::string in_signal_type) {
-	type = "SIGNAL";
+	type = "SIGNAL_EVENT";
 	symbol = in_symbol;
 	datetime = in_datetime;
 	signal_type = in_signal_type;
@@ -33,7 +33,7 @@ SignalEvent::~SignalEvent() {
 
 /* CLASS ORDEREVENT */
 OrderEvent::OrderEvent(std::string in_symbol, std::string in_order_type, int in_quantity, std::string in_direction) {
-	type = "ORDER";
+	type = "ORDER_EVENT";
 	symbol = in_symbol;
 	order_type = in_order_type;
 	quantity = in_quantity;
@@ -50,7 +50,7 @@ void OrderEvent::print_order() {
 
 /* CLASS FILLEVENT */
 FillEvent::FillEvent(std::string in_timeindex, std::string in_symbol, std::string in_exchange, int in_quantity, std::string in_direction, double in_fill_cost, std::string in_commision) {
-	type = "FILL";
+	type = "FILL_EVENT";
 	timeindex = in_timeindex;
 	symbol = in_symbol;
 	exchange = in_exchange;

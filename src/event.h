@@ -6,7 +6,8 @@ class Event {
 	public:
 		Event();
 		~Event();
-		std::string type;
+		enum EventType {MARKET_EVENT, SIGNAL_EVENT, ORDER_EVENT, FILL_EVENT};
+		EventType type;
 
 	private:
 

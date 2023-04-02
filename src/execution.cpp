@@ -1,0 +1,34 @@
+#include "execution.h"
+
+ExecutionHandler :: ExecutionHandler() {
+
+
+}
+
+ExecutionHandler::~ExecutionHandler() {
+
+
+}
+
+
+SimulatedExecutionHandler::SimulatedExecutionHandler(std::string in_events) {
+	events = in_events;
+}
+
+SimulatedExecutionHandler::~SimulatedExecutionHandler() {
+
+
+}
+
+void SimulatedExecutionHandler::execute_order(Event* event) {
+
+	if (event->type == Event::ORDER_EVENT) {
+		FillEvent* new_event = static_cast<FillEvent*>(event);
+		FillEvent fill_event("time", new_event->symbol, "SIMULATED", new_event->quantity, new_event->direction,0.0, "");
+
+		//self.events.put(fill_event) // que
+	}
+	else {
+
+	}
+}
