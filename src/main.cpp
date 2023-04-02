@@ -18,9 +18,13 @@ int main() {
 	data_test.update_bars("test");
 	
 	// Testing strategy_base.h
-	
+	Strategy_Base strat;
 
 	// Testing BuyAndHold_Strategy
+	BuyAndHold_Strategy BAH("test", "Test");
+	BAH.calculate_initial_bought();
+
+
 
 	return 0;
 }

@@ -1,6 +1,6 @@
 
 output: main.o event.o data.o strategy_base.o BuyAndHold_Strategy.o
-	c++ -std=c++17 main.o event.o data.o -o output
+	c++ -std=c++17 main.o event.o data.o strategy_base.o BuyAndHold_Strategy.o -o output
 
 main.o: main.cpp
 	c++ -std=c++17 -c main.cpp

@@ -9,7 +9,6 @@ class Strategy_Base {
 		~Strategy_Base();
 		void calculate_signals();
 
-
 	private:
 
 };
