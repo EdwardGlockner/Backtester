@@ -23,8 +23,8 @@ class NaivePortfolio : public Portfolio{
 
 		std::vector<std::map<std::string, std::string> > construct_all_positions();
 		std::vector<std::map<std::string, std::string> > construct_current_positions();
-		void construct_all_holdings();
-		void construct_current_holdings();
+		std::vector<std::map<std::string, std::string> > construct_all_holdings();
+		std::vector<std::map<std:.string, std::string> > construct_current_holdings();
 		void update_time_index();
 		void update_positions_from_fill();
 		void update_holdings_from_fill();
@@ -40,7 +40,7 @@ class NaivePortfolio : public Portfolio{
 		std::vector<std::string> symbol_list;
 		std::vector<std::map<std::string, std::string> > all_positions;
 		std::vector<std::map<std::string, std::string> > current_positions;
-		std::string all_holdings;
+		std::vector<std::map<std::string, std::string> > all_holdings;
 		std::string current_holdings;
 		float initial_capital;
 
