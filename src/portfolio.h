@@ -2,6 +2,8 @@
 #define PORTFOLIO
 
 #include "event.h"
+#include "data.h"
+
 class Portfolio {
 	public:
 		Portfolio();
@@ -15,10 +17,12 @@ class Portfolio {
 
 class NaivePortfolio : public Portfolio{
 	public:
-		NaivePortfolio(std::string in_bars, std::string in_events, std::string in_start_date, float in_initial_capital = 1000000);
+		HistoricCSVDataHandler data_handler;
+		NaivePortfolio(std::vector<HistoricCSVDataHandler::Bar> in_bars, std::vector<Event> in_events, std::string in_start_date, float in_initial_capital = 1000000);
 		~NaivePortfolio();
 
-		void construct_all_positions();
+		std::vector<std::map<std::string, std::string> > construct_all_positions();
+		std::vector<std::map<std::string, std::string> > construct_current_positions();
 		void construct_all_holdings();
 		void construct_current_holdings();
 		void update_time_index();
@@ -28,20 +32,19 @@ class NaivePortfolio : public Portfolio{
 		void generate_naive_order();
 		void update_signal();
 		void create_equity_curve_dataframe();
+		std::vector<std::string> create_symbol_list();
 		
-		std::string bars;
-	       	std::string events;
+		std::vector<HistoricCSVDataHandler::Bar> bars;
+	       	std::vector<Event> events;
 		std::string start_date;	
-		std::string symbol_list;
-		std::string all_positions;
-		std::string current_positions;
+		std::vector<std::string> symbol_list;
+		std::vector<std::map<std::string, std::string> > all_positions;
+		std::vector<std::map<std::string, std::string> > current_positions;
 		std::string all_holdings;
 		std::string current_holdings;
 		float initial_capital;
 
-	
 	private:
-
 
 };
 

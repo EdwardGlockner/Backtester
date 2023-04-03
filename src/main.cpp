@@ -43,5 +43,6 @@ int main() {
 	std::cout<<perf.create_variance()<<std::endl;
 	std::cout<<perf.create_stddev()<<std::endl;
 	*/
+
 	return 0;
 }
