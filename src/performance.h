@@ -8,7 +8,7 @@ class Performance {
 		Performance(const std::vector<float>& in_returns);
 		~Performance();
 
-		float create_sharpe_ratio();
+		float create_sharpe_ratio(int periods = 252);
 		float create_drawdowns();
 		float create_volatility();
 		void create_pdf_report();

@@ -1,5 +1,7 @@
 #include "performance.h"
 #include <cmath>
+#include <unistd.h>
+#include <iostream>
 
 Performance::Performance(const std::vector<float>& in_returns) {
 	returns = in_returns;
@@ -14,27 +16,18 @@ Performance::~Performance() {
 
 }
 
-float Performance::create_sharpe_ratio() {
-	int n = returns.size();
-       	float avg_return = 0.0f;
+/* 
+ * periods - Daily (252), Hourly (252*6.5), Minutely(252*6.5*60) etc.
+ */
+float Performance::create_sharpe_ratio(int periods) {
+	float sum = 0.0f;
+    	for (float num : returns) {
+        	sum += num;
+    	}
+    	float mean = sum / static_cast<float>(vec.size());
 
-	for (std::vector<float>::const_iterator it = returns.begin(); it != returns.end(); ++it) {
-    		const float& r = *it;
-    		avg_return += r;
-	}
-
-	avg_return /= n;
-	float std_dev = 0.0f;
-
-	for (std::vector<float>::const_iterator it = returns.begin(); it != returns.end(); ++it) {
-    		const float& r = *it;
-    		std_dev += std::pow(r - avg_return, 2);
-	}
-
-	std_dev /= n;
-	std_dev = std::sqrt(std_dev);
-	float sharpe = (avg_return - 0.0f) / std_dev;
-	return sharpe;
+	sr = sqrt(periods) * 
+	return sr;
 }
 
 float Performance::create_drawdowns() {
@@ -48,6 +41,9 @@ float Performance::create_volatility() {
 }
 
 void create_pdf_report() {
+	const char* relative_path = "../Reports/stock_report.py";
+	std::string command = "python3 " + std::string(relative_path);
+	std::system(command.c_str());
 
 }
 

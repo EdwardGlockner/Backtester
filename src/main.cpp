@@ -6,6 +6,8 @@
 #include "execution.h"
 #include "performance.h"
 
+#include <unistd.h>
+
 int main() {
 	// Testing event.h
 	OrderEvent Order("GOOG", "FX", 6, "UP");
@@ -25,8 +27,7 @@ int main() {
 	// Testing BuyAndHold_Strategy
 	//BuyAndHold_Strategy BAH("test", "Test");
 	//BAH.calculate_initial_bought();
-
-
-
+	
+	
 	return 0;
 }
