@@ -5,6 +5,7 @@
 #include "BAH_strategy.h"
 #include "execution.h"
 #include "performance.h"
+#include "portfolio.h"
 
 #include <unistd.h>
 
