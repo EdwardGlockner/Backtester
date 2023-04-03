@@ -28,6 +28,19 @@ int main() {
 	//BuyAndHold_Strategy BAH("test", "Test");
 	//BAH.calculate_initial_bought();
 	
-	
+	// Testing performance
+	/*
+	std::vector<float> in_returns;
+	in_returns.push_back(1.0f);	
+	in_returns.push_back(2.0f);
+	in_returns.push_back(3.0f);
+    	in_returns.push_back(4.0f);
+	in_returns.push_back(5.0f);
+	Performance perf(in_returns);
+	std::cout<<perf.create_sharpe_ratio()<<std::endl;
+	std::cout<<perf.create_volatility()<<std::endl;
+	std::cout<<perf.create_variance()<<std::endl;
+	std::cout<<perf.create_stddev()<<std::endl;
+	*/
 	return 0;
 }
