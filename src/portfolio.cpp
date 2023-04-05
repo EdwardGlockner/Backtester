@@ -113,7 +113,7 @@ void NaivePortfolio::update_time_index(Event event) {
 	std::map<std::string, std::string> dp;
 	dp = construct_current_positions();	
 	dp["datetime"] = temp_bars[symbol_list[0]].DateTime;
-	
+
 	for (int i = 0; i < symbol_list.size(); i++) {
 		dp[symbol_list[i]] = current_positions[symbol_list[i]];
 	}
@@ -128,7 +128,7 @@ void NaivePortfolio::update_time_index(Event event) {
 	dh["total"] = current_holdings["total"];
 
 	for (int i = 0; i < symbol_list.size(); i++) {
-		float market_value = std::stof(current_positions[symbol_list[i]]) * temp_bars[0].Close;
+		float market_value = std::stof(current_positions[symbol_list[i]]) * temp_bars[symbol_list[i]].Close;
 		dh[symbol_list[i]] = market_value;
 		dh["total"] += market_value;
 	}

@@ -71,6 +71,7 @@ class HistoricCSVDataHandler : public DataHandler {
 		};
 		struct Bar {
 		public:
+			Bar() {} // default constructor
 			Bar(
 				std::string symbol,
 				std::string datetime,

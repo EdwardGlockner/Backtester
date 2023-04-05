@@ -28,7 +28,7 @@ void BuyAndHold_Strategy :: calculate_signals(Event* event) {
 			struct HistoricCSVDataHandler::Bar latest_bars("", "",0,0,0,0,0);
 			latest_bars = bars.get_latest_bars(symbol_list[i], 1);
 			if (bought[symbol_list[i]] == false) {
-				SignalEvent signal(latest_bars.Symbol, latest_bars.DateTime, "LONG");
+				SignalEvent signal(latest_bars.Symbol, latest_bars.DateTime, "LONG", 1);
 				//events.put(signal); should be <queue>
 				bought[symbol_list[i]] = true;
 			}	

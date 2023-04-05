@@ -67,15 +67,11 @@ HistoricCSVDataHandler :: Bar HistoricCSVDataHandler :: get_latest_bars(std::str
 	/*
 	 *
 	 */
-	try {
-		return latest_symbol_data[symbol][-num_obs];
+	if (latest_symbol_data.find(symbol) == latest_symbol_data.end()) {
+		return Bar("","",0,0,0,0,0);
 	}
-	catch (std::exception e) {
-		std::cout << symbol << " is not a valid symbol." << std::endl;
-
-		struct Bar return_struct("","",0,0,0,0,0);
-
-		return return_struct;
+	else{
+		return latest_symbol_data[symbol][-num_obs];
 	}	
 }
 
