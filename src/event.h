@@ -25,13 +25,14 @@ class MarketEvent : public Event {
 
 class SignalEvent : public Event {
 	public:
-		SignalEvent(std::string in_symbol, std::string in_datetime, std::string in_signal_type);
+		SignalEvent(std::string in_symbol, std::string in_datetime, std::string in_signal_type, float in_strength);
 		/* fix to datetime type*/
 		~SignalEvent();
 		std::string type;
 		std::string symbol;
 		std::string datetime;
 		std::string signal_type;
+		float strength;
 	
 	private:
 

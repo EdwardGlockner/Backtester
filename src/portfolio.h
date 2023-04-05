@@ -22,16 +22,15 @@ class NaivePortfolio : public Portfolio{
 		~NaivePortfolio();
 
 		std::vector<std::map<std::string, std::string> > construct_all_positions();
-		std::vector<std::map<std::string, std::string> > construct_current_positions();
+		std::map<std::string, std::string> construct_current_positions();
 		std::vector<std::map<std::string, std::string> > construct_all_holdings();
-		std::vector<std::map<std::string, std::string> > construct_current_holdings();
+		std::map<std::string, std::string> construct_current_holdings();
 		void update_time_index();
 		void update_positions_from_fill();
 		void update_holdings_from_fill();
 		void update_fill();
-		void generate_naive_order();
-		void update_signal();
-		void create_equity_curve_dataframe();
+		OrderEvent generate_naive_order(Event* event);
+		void update_signal(Event* event);
 		std::vector<std::string> create_symbol_list();
 		
 		std::vector<HistoricCSVDataHandler::Bar> bars;
@@ -39,9 +38,9 @@ class NaivePortfolio : public Portfolio{
 		std::string start_date;	
 		std::vector<std::string> symbol_list;
 		std::vector<std::map<std::string, std::string> > all_positions;
-		std::vector<std::map<std::string, std::string> > current_positions;
+		std::map<std::string, std::string> current_positions;
 		std::vector<std::map<std::string, std::string> > all_holdings;
-		std::string current_holdings;
+		std::map<std::string, std::string> current_holdings;
 		float initial_capital;
 
 	private:

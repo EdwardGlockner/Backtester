@@ -120,8 +120,8 @@ void NaivePortfolio::update_fill() {
 
 }
 
-OrderEvent NaivePortfolio::generate_naive_order(Event* event) {
-	OrderEvent ord_evt("", "", 0, "");
+OrderEvent* NaivePortfolio::generate_naive_order(Event* event) {
+	OrderEvent* ord_evt;
 	if (event->type == Event::SIGNAL_EVENT) {
 		SignalEvent* sig_evt = static_cast<SignalEvent*>(event);
 		
@@ -135,15 +135,16 @@ OrderEvent NaivePortfolio::generate_naive_order(Event* event) {
 
 		if (direction == "LONG" && cur_quantity == 0) {
 			OrderEvent ord_evt(symbol, order_type, mkt_quantity, "BUY");
+		
 		}
 		else if (direction == "SHORT" && cur_quantity == 0) {
-			OrderEvent ord_evt(symbol, order_type, mkt_quantity, "SELL");
+		
 		}
 		else if (direction == "EXIT" && cur_quantity > 0) {
-			OrderEvent ord_evt(symbol, order_type, mkt_quantity, "SELL");	
+		
 		}
 		else if (direction == "EXIT" && cur_quantity < 0) {
-			OrderEvent ord_evt(symbol,order_type, mkt_quantity, "BUY");
+		
 		}
 
 	}

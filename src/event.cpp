@@ -20,11 +20,13 @@ MarketEvent::~MarketEvent() {
 }
 
 /* CLASS SIGNALEVENT */
-SignalEvent::SignalEvent(std::string in_symbol, std::string in_datetime, std::string in_signal_type) {
+SignalEvent::SignalEvent(std::string in_symbol, std::string in_datetime, std::string in_signal_type, float in_strength) {
 	type = "SIGNAL_EVENT";
 	symbol = in_symbol;
 	datetime = in_datetime;
 	signal_type = in_signal_type;
+	strength = in_strength;
+
 }
 
 SignalEvent::~SignalEvent() {
