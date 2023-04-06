@@ -1,59 +1,71 @@
+/*
+
+*/
+
 #include "data.h"
 
 /* CLASS DATAHANDLER */
 DataHandler::DataHandler() {
-
+	/*
+	
+	*/
 }
+
 
 DataHandler::~DataHandler() {
+	/*
+
+	*/
 
 }
+
 
 /* CLASS HISTORICCSVDATAHANDLER */
 HistoricCSVDataHandler::HistoricCSVDataHandler() {
+	/*
+
+
+	*/
 
 }
 
-HistoricCSVDataHandler::HistoricCSVDataHandler(std::string in_events, std::string in_csv_path, std::vector <std::string> in_symbol_list) {
+
+HistoricCSVDataHandler::HistoricCSVDataHandler(std::queue<Event> in_events, std::string in_csv_path, std::vector <std::string> in_symbol_list) {
 	/*
-	 *
+	 
 	 */
 
-	events= in_events;
+	events = in_events;
 	csv_path = in_csv_path;
 	symbol_list = in_symbol_list;
 	continue_backtest = true;
 	
 }
 
+
 HistoricCSVDataHandler::~HistoricCSVDataHandler() {
 	/*
-	 *
+	 
 	 */
 
 }
 
+
 void HistoricCSVDataHandler :: open_convert_csv_file() {
 	/*
-	 *
+	 
 	 */
 	
 	for (int i = 0; i < symbol_list.size(); i++) {
 		parse_yahoo_csv(symbol_list[i]);
 		latest_index[symbol_list[i]] = 0;
-		
-		/*
-		for (int j = 0; j < symbol_data[symbol_list[i]].size(); j++) {
-			symbol_data[symbol_list[i]][j].display();
-			}
-			*/
 	}
-	
 }
+
 
 HistoricCSVDataHandler :: Bar HistoricCSVDataHandler :: get_new_bar(std::string symbol) {
 	/*
-	 *
+	 
 	 */
 	data_struct temp_struct = symbol_data[symbol][latest_index[symbol]];
 	latest_index[symbol]++;
@@ -65,7 +77,7 @@ HistoricCSVDataHandler :: Bar HistoricCSVDataHandler :: get_new_bar(std::string 
 
 HistoricCSVDataHandler :: Bar HistoricCSVDataHandler :: get_latest_bars(std::string symbol, int num_obs) {
 	/*
-	 *
+	 
 	 */
 	if (latest_symbol_data.find(symbol) == latest_symbol_data.end()) {
 		return Bar("","",0,0,0,0,0);
@@ -77,7 +89,7 @@ HistoricCSVDataHandler :: Bar HistoricCSVDataHandler :: get_latest_bars(std::str
 
 void HistoricCSVDataHandler :: update_bars(std::string symbol) {
 	/*
-	 *
+	 
 	 */
 	for (int i = 0; i < symbol_list.size(); i++) {
 		if (latest_index[symbol_list[i]] > symbol_data[symbol_list[i]].size()) {
@@ -89,13 +101,12 @@ void HistoricCSVDataHandler :: update_bars(std::string symbol) {
 		}//self.events.put(MarketEvent())
 
 	}
-
 }
 
 
 void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
 	/*
-	 *
+	 
 	 */
 	std::fstream inputFile;
 	inputFile.open("/Users/edwardglockner/OneDrive - Uppsala universitet/Big Python Projects/Backtester/Data/YahooData/data/TSLA_2023-03-25_1m");
@@ -152,6 +163,5 @@ void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
 
 	std::vector <Bar> temp;
 	latest_symbol_data[symbol] = temp;
-	
 }
 

@@ -1,22 +1,51 @@
+/*
+
+*/
+
 #include "portfolio.h"
 
 Portfolio::Portfolio() {
+	/*
+
+	*/
 
 }
+
 
 Portfolio::~Portfolio() {
+	/*
 
+	*/
 }
+
 
 void Portfolio::update_signal(Event event) {
+	/*
+
+	*/
 
 }
+
 
 void Portfolio::update_fill(Event event) {
+	/*
+
+	*/
+}
+
+
+NaivePortfolio::NaivePortfolio() {
+	/*
+
+	*/
 
 }
 
-NaivePortfolio::NaivePortfolio(HistoricCSVDataHandler in_bars, std::vector<Event> in_events, std::string in_start_date, float in_initial_capital) {
+
+NaivePortfolio::NaivePortfolio(HistoricCSVDataHandler in_bars, std::queue<Event> in_events, std::string in_start_date, float in_initial_capital) {
+	/*
+
+	*/
 
 	bars = in_bars;
 	events = in_events;
@@ -28,11 +57,19 @@ NaivePortfolio::NaivePortfolio(HistoricCSVDataHandler in_bars, std::vector<Event
 	all_holdings = construct_all_holdings();
 }
 
+
 NaivePortfolio::~NaivePortfolio() {
+	/*
+
+	*/
 
 }
 
+
 std::vector<std::map<std::string, std::string> > NaivePortfolio::construct_all_positions() {
+	/*
+
+	*/
 
 	std::vector<std::map<std::string, std::string> > positions;
 	
@@ -51,6 +88,9 @@ std::vector<std::map<std::string, std::string> > NaivePortfolio::construct_all_p
 
 
 std::map<std::string, std::string> NaivePortfolio::construct_current_positions() {
+	/*
+
+	*/
 	
 	std::map<std::string, std::string> positions;
 
@@ -59,10 +99,13 @@ std::map<std::string, std::string> NaivePortfolio::construct_current_positions()
 	}
 
 	return positions;
-
 }
 
+
 std::vector<std::map<std::string, std::string> > NaivePortfolio::construct_all_holdings() {
+	/*
+
+	*/
 
 	std::vector< std::map<std::string, std::string> > holdings;
 	for (int i = 0; i < symbol_list.size(); i++) {
@@ -88,7 +131,12 @@ std::vector<std::map<std::string, std::string> > NaivePortfolio::construct_all_h
 	return holdings;
 }
 
+
 std::map<std::string, std::string> NaivePortfolio::construct_current_holdings() {
+	/*
+
+	*/
+
 	// should return map, not vector
 	std::map<std::string, std::string> holdings;
 	for (int i = 0; i < symbol_list.size(); i++) {
@@ -100,11 +148,14 @@ std::map<std::string, std::string> NaivePortfolio::construct_current_holdings() 
 	holdings["total"] = std::to_string(initial_capital);
 
 	return holdings;
-
-
 }
 
+
 void NaivePortfolio::update_time_index(Event event) {
+	/*
+
+	*/
+
 	std::map<std::string, HistoricCSVDataHandler::Bar> temp_bars;
 	for (int i = 0; i < symbol_list.size(); i++) {
 		temp_bars[symbol_list[i]] = bars.get_latest_bars(symbol_list[i], 1);
@@ -133,10 +184,14 @@ void NaivePortfolio::update_time_index(Event event) {
 		dh["total"] += market_value;
 	}
 	all_holdings.push_back(dh);
-
 }
 
+
 void NaivePortfolio::update_positions_from_fill(Event* event) {
+	/*
+
+	*/
+
 	if (event->type == Event::FILL_EVENT) {
 		FillEvent* fill_evt = static_cast<FillEvent*>(event);
 		int fill_dir = 0;
@@ -150,7 +205,12 @@ void NaivePortfolio::update_positions_from_fill(Event* event) {
 	}
 }
 
+
 void NaivePortfolio::update_holdings_from_fill(Event* event) {
+	/*
+
+	*/
+
 	if (event->type == Event::FILL_EVENT) {
 		FillEvent* fill_evt = static_cast<FillEvent*>(event);
 		int fill_dir = 0;
@@ -170,16 +230,25 @@ void NaivePortfolio::update_holdings_from_fill(Event* event) {
 	}
 }
 
+
 void NaivePortfolio::update_fill(Event* event) {
+	/*
+
+	*/
+
 	if (event->type == Event::FILL_EVENT) {
 		FillEvent* fill_evt = static_cast<FillEvent*>(event);
 		update_positions_from_fill(fill_evt);
 		update_holdings_from_fill(fill_evt);
 	}
-
 }
 
+
 OrderEvent NaivePortfolio::generate_naive_order(Event* event) {
+	/*
+
+	*/
+
 	OrderEvent ord_evt("", "", 0, "");
 	if (event->type == Event::SIGNAL_EVENT) {
 		SignalEvent* sig_evt = static_cast<SignalEvent*>(event);
@@ -211,10 +280,14 @@ OrderEvent NaivePortfolio::generate_naive_order(Event* event) {
 	}
 
 	return ord_evt;
-
 }
 
+
 void NaivePortfolio::update_signal(Event* event) {
+	/*
+
+	*/
+
 	if (event->type == Event::SIGNAL_EVENT) {
 		SignalEvent* new_event = static_cast<SignalEvent*>(event);
 		OrderEvent ord_evt = generate_naive_order(new_event);
@@ -223,7 +296,6 @@ void NaivePortfolio::update_signal(Event* event) {
 	else {
 	
 	}
-
 }
 
 

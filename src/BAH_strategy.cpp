@@ -1,16 +1,32 @@
+/*
+
+*/
+
 #include "BAH_strategy.h"
 
+BuyAndHold_Strategy :: BuyAndHold_Strategy() {
+	/*
 
-BuyAndHold_Strategy::BuyAndHold_Strategy(HistoricCSVDataHandler in_bars, Event in_events) {
+	*/
+}
+
+
+BuyAndHold_Strategy::BuyAndHold_Strategy(HistoricCSVDataHandler in_bars, std::queue<Event> in_events) {
+	/*
+
+	*/
 	bars = in_bars;
 	events = in_events;
 	bought = calculate_initial_bought();
-
 }
+
 
 BuyAndHold_Strategy :: ~BuyAndHold_Strategy() {
+	/*
 
+	*/
 }
+
 
 std::map <std::string, bool> BuyAndHold_Strategy :: calculate_initial_bought() {
 	std::map <std::string, bool> initial_bought;
@@ -19,8 +35,8 @@ std::map <std::string, bool> BuyAndHold_Strategy :: calculate_initial_bought() {
 	}
 
 	return initial_bought;
-
 }
+
 
 void BuyAndHold_Strategy :: calculate_signals(Event* event) {
 	if (event->type == Event::MARKET_EVENT) {

@@ -1,26 +1,51 @@
+/*
+
+*/
+
 #include "execution.h"
 
 ExecutionHandler :: ExecutionHandler() {
+	/*
 
+	*/
 
 }
 
-ExecutionHandler::~ExecutionHandler() {
 
+ExecutionHandler::~ExecutionHandler() {
+	/*
+
+	*/
+}
+
+
+SimulatedExecutionHandler::SimulatedExecutionHandler() {
+	/*
+
+	*/
 
 }
 
 
 SimulatedExecutionHandler::SimulatedExecutionHandler(std::string in_events) {
+	/*
+
+	*/
 	events = in_events;
 }
 
+
 SimulatedExecutionHandler::~SimulatedExecutionHandler() {
+	/*
 
-
+	*/
 }
 
+
 void SimulatedExecutionHandler::execute_order(Event* event) {
+	/*
+
+	*/
 
 	if (event->type == Event::ORDER_EVENT) {
 		// Use static_cast to cast the Event pointer to 

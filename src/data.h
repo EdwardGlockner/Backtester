@@ -1,24 +1,25 @@
+/*
+
+*/
 #ifndef DATA
 #define DATA
 
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <sstream>
-#include <map>
 #include <iterator>
-#include <float.h>
 #include <cmath>
-#include <numeric>
-#include <time.h>
-#include <math.h>
+#include <queue>
+#include <map>
 #include <string>
-#include <chrono>
-#include <ctime>
-#include <iomanip>
-#include <iterator>
+#include <sstream>
+
+#include "event.h"
 
 class DataHandler {
+	/*
+	 
+	 */
 	public:
 		DataHandler();
 		~DataHandler();
@@ -26,19 +27,15 @@ class DataHandler {
 
 
 class HistoricCSVDataHandler : public DataHandler {
+	/*
+	 
+	 */
 	public:
-		HistoricCSVDataHandler();
-		HistoricCSVDataHandler(std::string in_events, std::string in_csv_path, std::vector <std::string> in_symbol_list);
-		~HistoricCSVDataHandler();
-		std::string events;
-		std::string csv_path;
-		std::vector <std::string> symbol_list;	
-		
-		
-		/* Create a structure of our data, read from Yahoo Finance */
-		
+				
+		// Structure of the data for parsing Yahoo Finance data
 		struct data_struct {
 		public:
+			data_struct() {} // default constructor
 			data_struct(
 				std::string date,
 				double open,
@@ -69,6 +66,8 @@ class HistoricCSVDataHandler : public DataHandler {
 			int Volume;
 
 		};
+
+		// Bar structure
 		struct Bar {
 		public:
 			Bar() {} // default constructor
@@ -100,19 +99,31 @@ class HistoricCSVDataHandler : public DataHandler {
 			double AdjClose;
 			int Volume;
 		};
+		// Constructors and destructors
+		HistoricCSVDataHandler();
+		HistoricCSVDataHandler(std::queue<Event> in_events, std::string in_csv_path, std::vector <std::string> in_symbol_list);
+		~HistoricCSVDataHandler();
 
-		std::map <std::string, std::vector <data_struct> > symbol_data;
-		std::map <std::string, std::vector <Bar> > latest_symbol_data;		
-		std::map <std::string, int> latest_index;
-
-	       		
-		bool continue_backtest;
-
+		// Methods	
 		void open_convert_csv_file();
 		Bar get_new_bar(std::string symbol);
 		Bar get_latest_bars(std::string symbol, int num_obs);
 		void update_bars(std::string symbol); 
+		
+		// Members
+		std::queue<Event> events;
+		std::string csv_path;
+		std::vector <std::string> symbol_list;		
+		bool continue_backtest;
+		std::map <std::string, std::vector <data_struct> > symbol_data;
+		std::map <std::string, std::vector <Bar> > latest_symbol_data;		
+		std::map <std::string, int> latest_index;
+
+	private:
+		// Methods
 		void parse_yahoo_csv(std::string symbol);
+
+
 }; 
 #endif
 

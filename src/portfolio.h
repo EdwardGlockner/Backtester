@@ -1,3 +1,7 @@
+/*
+
+*/
+
 #ifndef PORTFOLIO
 #define PORTFOLIO
 
@@ -5,22 +9,33 @@
 #include "data.h"
 
 class Portfolio {
+	/*
+
+	*/
+
 	public:
+		// Constructors and destructors
 		Portfolio();
 		~Portfolio();
+
+		// Methods
 		void update_signal(Event event);
 		void update_fill(Event event);
-
-	private:
-
 };
 
 class NaivePortfolio : public Portfolio{
+	/*
+
+	*/
+
 	public:
-		HistoricCSVDataHandler data_handler;
-		NaivePortfolio(HistoricCSVDataHandler in_bars, std::vector<Event> in_events, std::string in_start_date, float in_initial_capital = 1000000);
+	
+		// Constructors and destructors
+		NaivePortfolio();
+		NaivePortfolio(HistoricCSVDataHandler in_bars, std::queue <Event> in_events, std::string in_start_date, float in_initial_capital = 1000000);
 		~NaivePortfolio();
 
+		// Methods
 		std::vector<std::map<std::string, std::string> > construct_all_positions();
 		std::map<std::string, std::string> construct_current_positions();
 		std::vector<std::map<std::string, std::string> > construct_all_holdings();
@@ -31,9 +46,11 @@ class NaivePortfolio : public Portfolio{
 		void update_fill(Event* event);
 		OrderEvent generate_naive_order(Event* event);
 		void update_signal(Event* event);
-		
+	
+		// Members
+		HistoricCSVDataHandler data_handler;	
 		HistoricCSVDataHandler bars;
-	       	std::vector<Event> events;
+	       	std::queue<Event> events;
 		std::string start_date;	
 		std::vector<std::string> symbol_list;
 		std::vector<std::map<std::string, std::string> > all_positions;
@@ -41,9 +58,6 @@ class NaivePortfolio : public Portfolio{
 		std::vector<std::map<std::string, std::string> > all_holdings;
 		std::map<std::string, std::string> current_holdings;
 		float initial_capital;
-
-	private:
-
 };
 
 

@@ -1,3 +1,7 @@
+/*
+
+*/
+
 #ifndef EXECUTION
 #define EXECUTION
 
@@ -5,29 +9,36 @@
 #include "event.h"
 
 class ExecutionHandler {
+	/*
+
+	*/
+
 	public:
+		// Constructors and destructors
 		ExecutionHandler();
 		~ExecutionHandler();
 
+		// Methods
 		void execute_order();
-
-	private:
-
 };
 
 class SimulatedExecutionHandler : public ExecutionHandler {
+	/*
+
+	*/
+
 	public:
+		// Constructors and destructors
+		SimulatedExecutionHandler();
 		SimulatedExecutionHandler(std::string in_events);
 		~SimulatedExecutionHandler();
-		std::string events;
 
+		// Methods
 		void execute_order(Event* event);
 
-	private:
-
+		// Members
+		std::string events;
 
 };
-
-
 
 #endif
