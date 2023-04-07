@@ -6,7 +6,7 @@
 
 
 /* CLASS EVENT */ 
-Event::Event() {
+Event :: Event() {
 	/*
 
 	*/
@@ -14,7 +14,7 @@ Event::Event() {
 } 
 
 
-Event::~Event() {
+Event :: ~Event() {
 	/*
 
 	*/
@@ -23,7 +23,7 @@ Event::~Event() {
 
 
 /* CLASS MARKETEVENT */
-MarketEvent::MarketEvent() {
+MarketEvent :: MarketEvent() {
 	/*
 
 	*/
@@ -31,7 +31,7 @@ MarketEvent::MarketEvent() {
 }
 
 
-MarketEvent::~MarketEvent() {
+MarketEvent :: ~MarketEvent() {
 	/*
 
 	*/
@@ -40,7 +40,7 @@ MarketEvent::~MarketEvent() {
 
 
 /* CLASS SIGNALEVENT */
-SignalEvent::SignalEvent() {
+SignalEvent :: SignalEvent() {
 	/*
 
 	*/
@@ -48,7 +48,7 @@ SignalEvent::SignalEvent() {
 }
 
 
-SignalEvent::SignalEvent(std::string in_symbol, std::string in_datetime, std::string in_signal_type, float in_strength) {
+SignalEvent :: SignalEvent(std::string in_symbol, std::string in_datetime, std::string in_signal_type, float in_strength) {
 	/*
 
 	*/
@@ -61,7 +61,7 @@ SignalEvent::SignalEvent(std::string in_symbol, std::string in_datetime, std::st
 }
 
 
-SignalEvent::~SignalEvent() {
+SignalEvent :: ~SignalEvent() {
 	/*
 
 	*/
@@ -70,7 +70,7 @@ SignalEvent::~SignalEvent() {
 
 
 /* CLASS ORDEREVENT */
-OrderEvent::OrderEvent() {
+OrderEvent :: OrderEvent() {
 	/*
 
 	*/
@@ -78,7 +78,7 @@ OrderEvent::OrderEvent() {
 }
 
 
-OrderEvent::OrderEvent(std::string in_symbol, std::string in_order_type, int in_quantity, std::string in_direction) {
+OrderEvent :: OrderEvent(std::string in_symbol, std::string in_order_type, int in_quantity, std::string in_direction) {
 	/*
 
 	*/
@@ -91,7 +91,7 @@ OrderEvent::OrderEvent(std::string in_symbol, std::string in_order_type, int in_
 }
 
 
-OrderEvent::~OrderEvent() {
+OrderEvent :: ~OrderEvent() {
 	/*
 
 	*/
@@ -99,7 +99,7 @@ OrderEvent::~OrderEvent() {
 }
 
 
-void OrderEvent::print_order() {
+void OrderEvent :: print_order() {
 	/*
 
 	*/
@@ -109,7 +109,7 @@ void OrderEvent::print_order() {
 
 
 /* CLASS FILLEVENT */
-FillEvent::FillEvent() {
+FillEvent :: FillEvent() {
 	/*
 
 	*/
@@ -117,7 +117,7 @@ FillEvent::FillEvent() {
 }
 
 
-FillEvent::FillEvent(std::string in_timeindex, std::string in_symbol, std::string in_exchange, int in_quantity, std::string in_direction, double in_fill_cost, std::string in_commision) {
+FillEvent :: FillEvent(std::string in_timeindex, std::string in_symbol, std::string in_exchange, int in_quantity, std::string in_direction, double in_fill_cost, std::string in_commision) {
 	/*
 
 	*/
@@ -133,7 +133,7 @@ FillEvent::FillEvent(std::string in_timeindex, std::string in_symbol, std::strin
 }
 
 
-FillEvent::~FillEvent() {
+FillEvent :: ~FillEvent() {
 	/*
 
 	*/
@@ -141,7 +141,7 @@ FillEvent::~FillEvent() {
 }
 
 
-double FillEvent::calc_ib_commision() {
+double FillEvent :: calc_ib_commision() {
 	/*
 
 	*/

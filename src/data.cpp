@@ -5,14 +5,14 @@
 #include "data.h"
 
 /* CLASS DATAHANDLER */
-DataHandler::DataHandler() {
+DataHandler :: DataHandler() {
 	/*
 	
 	*/
 }
 
 
-DataHandler::~DataHandler() {
+DataHandler :: ~DataHandler() {
 	/*
 
 	*/
@@ -21,7 +21,7 @@ DataHandler::~DataHandler() {
 
 
 /* CLASS HISTORICCSVDATAHANDLER */
-HistoricCSVDataHandler::HistoricCSVDataHandler() {
+HistoricCSVDataHandler :: HistoricCSVDataHandler() {
 	/*
 
 
@@ -30,7 +30,7 @@ HistoricCSVDataHandler::HistoricCSVDataHandler() {
 }
 
 
-HistoricCSVDataHandler::HistoricCSVDataHandler(std::queue<Event> in_events, std::string in_csv_path, std::vector <std::string> in_symbol_list) {
+HistoricCSVDataHandler :: HistoricCSVDataHandler(std::queue<Event> in_events, std::string in_csv_path, std::vector <std::string> in_symbol_list) {
 	/*
 	 
 	 */
@@ -39,11 +39,10 @@ HistoricCSVDataHandler::HistoricCSVDataHandler(std::queue<Event> in_events, std:
 	csv_path = in_csv_path;
 	symbol_list = in_symbol_list;
 	continue_backtest = true;
-	
 }
 
 
-HistoricCSVDataHandler::~HistoricCSVDataHandler() {
+HistoricCSVDataHandler :: ~HistoricCSVDataHandler() {
 	/*
 	 
 	 */
@@ -63,7 +62,7 @@ void HistoricCSVDataHandler :: open_convert_csv_file() {
 }
 
 
-HistoricCSVDataHandler :: Bar HistoricCSVDataHandler :: get_new_bar(std::string symbol) {
+HistoricCSVDataHandler::Bar HistoricCSVDataHandler :: get_new_bar(std::string symbol) {
 	/*
 	 
 	 */
@@ -75,7 +74,7 @@ HistoricCSVDataHandler :: Bar HistoricCSVDataHandler :: get_new_bar(std::string 
 	return return_bar;
 }
 
-HistoricCSVDataHandler :: Bar HistoricCSVDataHandler :: get_latest_bars(std::string symbol, int num_obs) {
+HistoricCSVDataHandler::Bar HistoricCSVDataHandler :: get_latest_bars(std::string symbol, int num_obs) {
 	/*
 	 
 	 */
@@ -99,7 +98,6 @@ void HistoricCSVDataHandler :: update_bars(std::string symbol) {
 			struct Bar bar = get_new_bar(symbol_list[i]);
 			latest_symbol_data[symbol_list[i]].push_back(bar);
 		}//self.events.put(MarketEvent())
-
 	}
 }
 
@@ -160,7 +158,6 @@ void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
 
 		line = "";
 	}
-
 	std::vector <Bar> temp;
 	latest_symbol_data[symbol] = temp;
 }

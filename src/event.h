@@ -76,7 +76,7 @@ class OrderEvent : public Event {
 		std::string direction;
 };
 
-class FillEvent :public Event {
+class FillEvent : public Event {
 	/*
 
 	*/

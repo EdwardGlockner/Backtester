@@ -29,7 +29,6 @@ class NaivePortfolio : public Portfolio{
 	*/
 
 	public:
-	
 		// Constructors and destructors
 		NaivePortfolio();
 		NaivePortfolio(HistoricCSVDataHandler in_bars, std::queue <Event> in_events, std::string in_start_date, float in_initial_capital = 1000000);
@@ -59,6 +58,5 @@ class NaivePortfolio : public Portfolio{
 		std::map<std::string, std::string> current_holdings;
 		float initial_capital;
 };
-
 
 #endif 
