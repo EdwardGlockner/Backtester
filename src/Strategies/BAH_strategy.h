@@ -7,7 +7,7 @@
 
 #include "strategy_base.h"
 #include "event.h"
-#include "data.h"
+#include "../Data/data.h"
 #include <map>
 #include <vector>
 

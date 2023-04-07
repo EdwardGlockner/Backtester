@@ -1,10 +1,13 @@
-#include "event.h"
-#include "data.h"
-#include "strategy_base.h"
-#include "BAH_strategy.h"
-#include "execution.h"
-#include "performance.h"
-#include "portfolio.h"
+/*
+
+*/
+#include "Event/event.h"
+#include "Data/data.h"
+#include "Strategies/strategy_base.h"
+#include "Strategies/BAH_strategy.h"
+#include "Execution/execution.h"
+#include "Performance/performance.h"
+#include "Portfolio/portfolio.h"
 
 #include <iostream>
 #include <unistd.h>
@@ -13,6 +16,7 @@
 
 
 void backtest(std::queue<Event> events, HistoricCSVDataHandler data, Portfolio portfolio, BuyAndHold_Strategy strategy, SimulatedExecutionHandler broker) {
+	/*
 	bool running = true;
 	while (running) {
 		data.update_bars("test");
@@ -44,6 +48,7 @@ void backtest(std::queue<Event> events, HistoricCSVDataHandler data, Portfolio p
 			}
 		}
 	}
+	*/
 }
 
 int main() {
@@ -55,29 +60,11 @@ int main() {
 	HistoricCSVDataHandler data = HistoricCSVDataHandler(events, "/Users/edwardglockner/OneDrive - Uppsala universitet/Big Python Projects/Backtester/Data/YahooData/data/TSLA_2023-03-25_1m", symbol_list);
 	NaivePortfolio portfolio = NaivePortfolio(data, events, "date", 1000000);
 	BuyAndHold_Strategy strategy = BuyAndHold_Strategy(data, events);
-	SimulatedExecutionHandler broker = SimulatedExecutionHandler(events);
+	//SimulatedExecutionHandler broker = SimulatedExecutionHandler(events);
 
 	std::cout<<"Program starts!"<<std::endl;
 
-	backtest(events, data, portfolio, strategy, broker);
+	//backtest(events, data, portfolio, strategy, broker);
 
-	/*
-	events = queue.Queue()
-	data = HistoricCSVDataHandler(events, 'csv/', ['OMXS30'], DataSource.NASDAQ)
-	portfolio = NaivePortfolio(data, events, '', initial_capital=2000)
-	strategy = MovingAveragesLongStrategy(data, events, portfolio, 50, 100, version=1)
-	portfolio.strategy_name = strategy.name
-	broker = SimulateExecutionHandler(events)
-	 */
 	return 0;	
 }
-/*
-    stats = portfolio.summary_stats()
-
-    for stat in stats:
-            print(stat[0] + ": " + stat[1])
-
-    strategy.plot()
-    portfolio.plot_all()
-
-  */

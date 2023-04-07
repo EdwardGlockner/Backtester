@@ -5,8 +5,8 @@
 #ifndef PORTFOLIO
 #define PORTFOLIO
 
-#include "event.h"
-#include "data.h"
+#include "../Event/event.h"
+#include "../Data/data.h"
 
 class Portfolio {
 	/*
