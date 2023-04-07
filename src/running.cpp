@@ -12,7 +12,7 @@
 #include <vector>
 
 
-void backtest(std::queue<Event> events, HistoricCSVDataHandler data, Portfolio portfolio, BuyAndHold_Strategy strategy, Broker broker) {
+void backtest(std::queue<Event> events, HistoricCSVDataHandler data, Portfolio portfolio, BuyAndHold_Strategy strategy, SimulatedExecutionHandler broker) {
 	bool running = true;
 	while (running) {
 		data.update_bars("test");
@@ -40,7 +40,6 @@ void backtest(std::queue<Event> events, HistoricCSVDataHandler data, Portfolio p
 				}
 				else if (event.type == Event::FILL_EVENT) {
 					portfolio.update_fill(event);
-				
 				}
 			}
 		}
@@ -56,10 +55,11 @@ int main() {
 	HistoricCSVDataHandler data = HistoricCSVDataHandler(events, "/Users/edwardglockner/OneDrive - Uppsala universitet/Big Python Projects/Backtester/Data/YahooData/data/TSLA_2023-03-25_1m", symbol_list);
 	NaivePortfolio portfolio = NaivePortfolio(data, events, "date", 1000000);
 	BuyAndHold_Strategy strategy = BuyAndHold_Strategy(data, events);
+	SimulatedExecutionHandler broker = SimulatedExecutionHandler(events);
 
 	std::cout<<"Program starts!"<<std::endl;
 
-	backtest(events, data, portfolio, strategy);
+	backtest(events, data, portfolio, strategy, broker);
 
 	/*
 	events = queue.Queue()
