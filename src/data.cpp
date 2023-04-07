@@ -107,7 +107,7 @@ void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
 	 
 	 */
 	std::fstream inputFile;
-	inputFile.open("/Users/edwardglockner/OneDrive - Uppsala universitet/Big Python Projects/Backtester/Data/YahooData/data/TSLA_2023-03-25_1m");
+	inputFile.open(csv_path);
 
 	std::string line = "";
 	std::getline(inputFile, line);
