@@ -39,6 +39,8 @@ HistoricCSVDataHandler :: HistoricCSVDataHandler(std::queue<Event> in_events, st
 	csv_path = in_csv_path;
 	symbol_list = in_symbol_list;
 	continue_backtest = true;
+	open_convert_csv_file();
+
 }
 
 
@@ -62,10 +64,15 @@ void HistoricCSVDataHandler :: open_convert_csv_file() {
 }
 
 
-HistoricCSVDataHandler::Bar HistoricCSVDataHandler :: get_new_bar(std::string symbol) {
+HistoricCSVDataHandler::Bar HistoricCSVDataHandler :: get_new_bar(std::string symbol) { // works
 	/*
 	 
 	 */
+	if (symbol_data.count("TSLA") && symbol_data["TSLA"].size() > 0) {
+		//std::cout<<symbol_data["TSLA"][0].Close <<std::endl;
+	}
+	else {//std::cout<<"here"<<std::endl;
+	      } 
 	data_struct temp_struct = symbol_data[symbol][latest_index[symbol]];
 	latest_index[symbol]++;
 	

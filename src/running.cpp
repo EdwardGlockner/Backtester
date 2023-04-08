@@ -24,7 +24,9 @@ void backtest(std::queue<Event> events, HistoricCSVDataHandler data, NaivePortfo
 		if (!data.continue_backtest) {
 			running = false;
 		}
-		/*
+
+		// need to put events
+		
 		while (true) {
 			if (events.empty()) {
 				break;
@@ -49,7 +51,7 @@ void backtest(std::queue<Event> events, HistoricCSVDataHandler data, NaivePortfo
 				}
 			}
 		}
-		*/
+		
 		running = false;
 	}
 	
