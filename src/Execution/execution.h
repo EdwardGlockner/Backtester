@@ -6,6 +6,7 @@
 #define EXECUTION
 
 #include <iostream>
+#include <queue>
 #include "../Event/event.h"
 
 class ExecutionHandler {
@@ -30,14 +31,14 @@ class SimulatedExecutionHandler : public ExecutionHandler {
 	public:
 		// Constructors and destructors
 		SimulatedExecutionHandler();
-		SimulatedExecutionHandler(std::string in_events);
+		SimulatedExecutionHandler(std::queue<Event> in_events);
 		~SimulatedExecutionHandler();
 
 		// Methods
 		void execute_order(Event* event);
 
 		// Members
-		std::string events;
+		std::queue<Event> events;
 
 };
 

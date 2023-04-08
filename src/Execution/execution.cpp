@@ -27,7 +27,7 @@ SimulatedExecutionHandler :: SimulatedExecutionHandler() {
 }
 
 
-SimulatedExecutionHandler :: SimulatedExecutionHandler(std::string in_events) {
+SimulatedExecutionHandler :: SimulatedExecutionHandler(std::queue<Event> in_events) {
 	/*
 
 	*/

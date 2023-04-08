@@ -15,14 +15,16 @@
 #include <vector>
 
 
-void backtest(std::queue<Event> events, HistoricCSVDataHandler data, Portfolio portfolio, BuyAndHold_Strategy strategy, SimulatedExecutionHandler broker) {
-	/*
+void backtest(std::queue<Event> events, HistoricCSVDataHandler data, NaivePortfolio portfolio, BuyAndHold_Strategy strategy, SimulatedExecutionHandler broker) {
+	
 	bool running = true;
 	while (running) {
-		data.update_bars("test");
+		data.update_bars("TSLA");
+		std::cout<<"here"<<std::endl;
 		if (!data.continue_backtest) {
 			running = false;
 		}
+		/*
 		while (true) {
 			if (events.empty()) {
 				break;
@@ -31,40 +33,40 @@ void backtest(std::queue<Event> events, HistoricCSVDataHandler data, Portfolio p
 			events.pop();
 			if (true) { // check if the event is null or not
 				if (event.type == Event::MARKET_EVENT) {
-					strategy.calculate_signals(event);	
-					portfolio.update_timeindex(event);
+					strategy.calculate_signals(&event);	
+					portfolio.update_time_index(event);
 				}
 				else if (event.type == Event::SIGNAL_EVENT) {
-					portfolio.update_signal(event);
+					portfolio.update_signal(&event);
 				
 				}
 				else if (event.type == Event::ORDER_EVENT) {
-					broker.execute_order(event);
+					broker.execute_order(&event);
 				
 				}
 				else if (event.type == Event::FILL_EVENT) {
-					portfolio.update_fill(event);
+					portfolio.update_fill(&event);
 				}
 			}
 		}
+		*/
+		running = false;
 	}
-	*/
+	
 }
 
 int main() {
 	std::queue<Event> events;
-	std::vector<Event> eventss;
 	std::vector<std::string> symbol_list(1, "TSLA");
-	Event eventtt;
 
-	HistoricCSVDataHandler data = HistoricCSVDataHandler(events, "/Users/edwardglockner/OneDrive - Uppsala universitet/Big Python Projects/Backtester/Data/YahooData/data/TSLA_2023-03-25_1m", symbol_list);
+	HistoricCSVDataHandler data = HistoricCSVDataHandler(events, "/Users/edwardglockner/OneDrive - Uppsala universitet/Big Python Projects/Backtester/data/YahooData/data/TSLA_1m.csv", symbol_list);
 	NaivePortfolio portfolio = NaivePortfolio(data, events, "date", 1000000);
 	BuyAndHold_Strategy strategy = BuyAndHold_Strategy(data, events);
-	//SimulatedExecutionHandler broker = SimulatedExecutionHandler(events);
+	SimulatedExecutionHandler broker = SimulatedExecutionHandler(events);
 
 	std::cout<<"Program starts!"<<std::endl;
-
-	//backtest(events, data, portfolio, strategy, broker);
+	backtest(events, data, portfolio, strategy, broker);
+	std::cout<<"Program ends!"<<std::endl;
 
 	return 0;	
 }
