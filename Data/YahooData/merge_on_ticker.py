@@ -40,13 +40,13 @@ def create_dict():
 
 
 def merge_files(tick_map):
-    #for tick in tick_map:
-    #    combined_csv = pd.concat([pd.read_csv(f) for f in tick_map[tick]])
-    #    print(f"Done merging {tick}") 
-    combined_csv = pd.concat(pd.read_csv(f) for f in tick_map["TSLA"])
-
-    print(combined_csv)
-
+    for tick in tick_map:
+        combined_csv = pd.concat([pd.read_csv(f) for f in tick_map[tick]])
+        new_name = tick + "_1m" + ".csv"
+        combined_csv.to_csv(directory + new_name, index=False, encoding="unicode_escape")
+        for file in tick_map[tick]:
+            os.remove(file)
+        print(f"Done merging {tick}")
 
 def cleaning_csv(csv):
     pass
