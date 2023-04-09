@@ -2,6 +2,4 @@
 
 */
 
-#include <iostream>
-
-#include "../src/Strategies/strategy_base.h"
+#include "t_strategy_base.h"

@@ -2,6 +2,4 @@
 
 */
 
-#include <iostream>
-
-#include "../src/Portfolio/portfolio.h"
+#include "t_portfolio.h"

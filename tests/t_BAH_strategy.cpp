@@ -2,6 +2,5 @@
 
 */
 
-#include <iostream>
+#include "t_BAH_strategy.h"
 
-#include "../src/Strategies/BAH_strategy.h"

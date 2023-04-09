@@ -2,6 +2,4 @@
 
 */
 
-#include <iostream>
-
-#include "../src/Performance/performance.h"
+#include "t_performance.h"
