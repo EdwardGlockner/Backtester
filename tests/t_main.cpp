@@ -4,17 +4,17 @@
 
 #include <iostream>
 
-#include "t_BAH_strategy.cpp"
-#include "t_broker.cpp"
-#include "t_data.cpp"
-#include "t_event.cpp"
-#include "t_execution.cpp"
-#include "t_performance.cpp"
-#include "t_portfolio.cpp"
-#include "t_strategy_base.cpp"
+#include "t_BAH_strategy.h"
+#include "t_broker.h"
+#include "t_data.h"
+#include "t_event.h"
+#include "t_execution.h"
+#include "t_performance.h"
+#include "t_portfolio.h"
+#include "t_strategy_base.h"
 
 
 int main() {
-
+	std::cout<<"Hello World"<<std::endl;
 	return 0;
 }
