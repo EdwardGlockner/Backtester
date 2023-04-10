@@ -18,6 +18,8 @@ int main() {
 	// TESTING DATA CLASS
 	t_data testing_data = t_data();
 	testing_data.t_open_convert_csv_file();
+	testing_data.t_get_new_bar();
+	testing_data.t_get_latest_bars();
 
 
 	return 0;

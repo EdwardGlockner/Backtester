@@ -33,13 +33,14 @@ class HistoricCSVDataHandler : public DataHandler {
 	public:
 				
 		// Structure of the data for parsing Yahoo Finance data
-		struct data_struct {
+		struct data_struct { 
 		public:
 			data_struct() {} // default constructor
 			data_struct(
 				std::string date,
 				double open,
 				double high,
+				double low,
 				double close,
 				double adjclose,
 				int volume // LOW IS NOT HERE?
@@ -47,6 +48,7 @@ class HistoricCSVDataHandler : public DataHandler {
 				Date = date;
 				Open = open;
 				High = high;
+				Low = low;
 				Close = close;
 				AdjClose = adjclose;
 				Volume = volume;
@@ -55,12 +57,17 @@ class HistoricCSVDataHandler : public DataHandler {
 			// Function to write out all the data
 			void display() {
 				std::cout << "Date: " << Date << std::endl;
+				std::cout << "Open: " << Open << std::endl;
+				std::cout << "Low: " << Low << std::endl;
+				std::cout << "Close: " << Close << std::endl;
+				std::cout << "Volume: " << Volume << std::endl;
 			
 			}
 
 			std::string Date; //convert to datetime
 			double Open;
 			double High;
+			double Low;
 			double Close;
 			double AdjClose;
 			int Volume;
@@ -76,6 +83,7 @@ class HistoricCSVDataHandler : public DataHandler {
 				std::string datetime,
 				double open,
 				double high,
+				double low,
 				double close,
 				double adjclose,
 				int volume		
@@ -84,17 +92,24 @@ class HistoricCSVDataHandler : public DataHandler {
 			    DateTime = datetime; // convert to datetime object
 			    Open = open;
 			    High = high;
+			    Low = low;
 			    Close = close;
 			    AdjClose = adjclose;
 			    Volume = volume;
 			}
 			void display() {
+				std::cout << "Symbol: " << Symbol << std::endl;
 				std::cout << "Date: " << DateTime << std::endl;
+				std::cout << "Open: " << Open << std::endl;
+				std::cout << "Low: " << Low << std::endl;
+				std::cout << "Close: " << Close << std::endl;
+				std::cout << "Volume: " << Volume << std::endl;
 			}
 			std::string Symbol;
 			std::string DateTime;
 			double Open;
 			double High;
+			double Low;
 			double Close;
 			double AdjClose;
 			int Volume;

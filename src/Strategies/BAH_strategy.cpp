@@ -44,7 +44,7 @@ void BuyAndHold_Strategy :: calculate_signals(Event* event) {
 	*/
 	if (event->type == Event::MARKET_EVENT) {
 		for (int i = 0; i < symbol_list.size(); i++) {
-			struct HistoricCSVDataHandler::Bar latest_bars("", "",0,0,0,0,0);
+			struct HistoricCSVDataHandler::Bar latest_bars;
 			latest_bars = bars.get_latest_bars(symbol_list[i], 1);
 			if (bought[symbol_list[i]] == false) {
 				SignalEvent signal(latest_bars.Symbol, latest_bars.DateTime, "LONG", 1);

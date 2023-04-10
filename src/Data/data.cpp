@@ -63,19 +63,14 @@ void HistoricCSVDataHandler :: open_convert_csv_file() {
 }
 
 
-HistoricCSVDataHandler::Bar HistoricCSVDataHandler :: get_new_bar(std::string symbol) { // works
+HistoricCSVDataHandler::Bar HistoricCSVDataHandler :: get_new_bar(std::string symbol) { 
 	/*
 	 
 	 */
-	if (symbol_data.count("TSLA") && symbol_data["TSLA"].size() > 0) {
-		//std::cout<<symbol_data["TSLA"][0].Close <<std::endl;
-	}
-	else {//std::cout<<"here"<<std::endl;
-	      } 
 	data_struct temp_struct = symbol_data[symbol][latest_index[symbol]];
 	latest_index[symbol]++;
 	
-	struct Bar return_bar(symbol, temp_struct.Date, temp_struct.Open, temp_struct.High, temp_struct.Close, temp_struct.AdjClose, temp_struct.Volume);
+	struct Bar return_bar(symbol, temp_struct.Date, temp_struct.Open, temp_struct.High, temp_struct.Low, temp_struct.Close, temp_struct.AdjClose, temp_struct.Volume);
 	
 	return return_bar;
 }
@@ -85,10 +80,10 @@ HistoricCSVDataHandler::Bar HistoricCSVDataHandler :: get_latest_bars(std::strin
 	 
 	 */
 	if (latest_symbol_data.find(symbol) == latest_symbol_data.end()) {
-		return Bar("","",0,0,0,0,0);
+		return Bar();
 	}
 	else{
-		return latest_symbol_data[symbol][-num_obs];
+		return latest_symbol_data[symbol][latest_symbol_data[symbol].size() - num_obs];
 	}	
 }
 
@@ -123,6 +118,7 @@ void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
 		std::string Date;
 		double Open;
 		double High;
+		double Low;
 		double Close;
 		double AdjClose;
 		int Volume;
@@ -142,6 +138,10 @@ void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
 		tempString = "";
 
 		std::getline(inputString, tempString, ',');
+		Low = std::atof(tempString.c_str());
+		tempString = "";
+
+		std::getline(inputString, tempString, ',');
 		Close = std::atof(tempString.c_str());
 		tempString = "";
 
@@ -152,7 +152,7 @@ void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
 		std::getline(inputString, tempString, ',');
 		Volume = std::atoi(tempString.c_str());
 
-		data_struct current_data(Date, Open, High, Close, AdjClose, Volume);
+		data_struct current_data(Date, Open, High, Low, Close, AdjClose, Volume);
 
 		if (symbol_data.find(symbol) == symbol_data.end()) {
 			std::vector<data_struct> newVec;
@@ -165,7 +165,6 @@ void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
 
 		line = "";
 
-		std::cout << current_data.Date << " " << current_data.Open << " " << current_data.High << " " << current_data.Close << " " << current_data.AdjClose << " " << current_data.Volume << std::endl;
 	}
 	std::vector <Bar> temp;
 	latest_symbol_data[symbol] = temp;

@@ -20,10 +20,11 @@ class t_data {
 		void t_get_latest_bars();
 		void t_update_bars();
 
-		void testing_members();
+		void t_testing_members();
 
 		// Members
 		HistoricCSVDataHandler testing;
+		int num_test;
 
 };
 
