@@ -56,7 +56,6 @@ void HistoricCSVDataHandler :: open_convert_csv_file() {
 	/*
 	 
 	 */
-	
 	for (int i = 0; i < symbol_list.size(); i++) {
 		parse_yahoo_csv(symbol_list[i]);
 		latest_index[symbol_list[i]] = 0;
@@ -165,6 +164,8 @@ void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
 		}
 
 		line = "";
+
+		std::cout << current_data.Date << " " << current_data.Open << " " << current_data.High << " " << current_data.Close << " " << current_data.AdjClose << " " << current_data.Volume << std::endl;
 	}
 	std::vector <Bar> temp;
 	latest_symbol_data[symbol] = temp;
