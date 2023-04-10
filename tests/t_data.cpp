@@ -152,14 +152,12 @@ void t_data :: t_get_latest_bars(){
 	else {
 		std::cout << "HistoricCSVDataHandler, test " << num_test << ": \t function {get_latest_bars} not passed test!" << std::endl;
 	}
-
-
-
 }
 
 
 void t_data :: t_update_bars() {
-
+	testing.latest_index["TSLA"] = 0;
+	// todo
 }
 
 
