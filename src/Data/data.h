@@ -42,7 +42,7 @@ class HistoricCSVDataHandler : public DataHandler {
 				double high,
 				double close,
 				double adjclose,
-				int volume
+				int volume // LOW IS NOT HERE?
 			) {
 				Date = date;
 				Open = open;

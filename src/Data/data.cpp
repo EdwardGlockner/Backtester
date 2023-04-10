@@ -159,7 +159,8 @@ void HistoricCSVDataHandler :: parse_yahoo_csv(std::string symbol) {
 			std::vector<data_struct> newVec;
 			newVec.push_back(current_data);
 			symbol_data[symbol] = newVec;
-		} else {
+		} 
+		else {
 			symbol_data[symbol].push_back(current_data);
 		}
 

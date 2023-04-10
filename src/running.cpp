@@ -20,7 +20,6 @@ void backtest(std::queue<Event> events, HistoricCSVDataHandler data, NaivePortfo
 	bool running = true;
 	while (running) {
 		data.update_bars("TSLA");
-		std::cout<<"here"<<std::endl;
 		if (!data.continue_backtest) {
 			running = false;
 		}

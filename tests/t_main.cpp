@@ -15,6 +15,10 @@
 
 
 int main() {
-	std::cout<<"Hello World"<<std::endl;
+	// TESTING DATA CLASS
+	t_data testing_data = t_data(); 
+	testing_data.t_open_convert_csv_file();
+
+
 	return 0;
 }
