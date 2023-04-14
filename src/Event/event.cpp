@@ -3,7 +3,7 @@
 */
 
 #include "event.h"
-
+// NEED TO FIX THE INHERITANCE SITUATION
 
 /* CLASS EVENT */ 
 Event :: Event() {

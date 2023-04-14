@@ -156,8 +156,37 @@ void t_data :: t_get_latest_bars(){
 
 
 void t_data :: t_update_bars() {
+	// Check the function update_bars in data.cpp for todo
 	testing.latest_index["TSLA"] = 0;
-	// todo
+	// Clear the events queue
+	while (!testing.events.empty())
+	{
+		testing.events.pop();
+	}
+
+	int length_1 = testing.events.size();
+	int len_symbol_data_1 = testing.latest_symbol_data["TSLA"].size();
+	testing.update_bars("TSLA");
+	int length_2 = testing.events.size();
+	int len_symbol_data_2 = testing.latest_symbol_data["TSLA"].size();
+
+
+	if ((length_2 - length_1) == 1) {
+		std::cout << "HistoricCSVDataHandler, test " << num_test << ": \t function {update_bars} passed test!" << std::endl;	
+		++num_test;
+	}
+	else {
+		std::cout << "HistoricCSVDataHandler, test " << num_test << ": \t function {update_bars} NOT passed test!" << std::endl;
+	}
+
+	if ((len_symbol_data_2 - len_symbol_data_1) == 1) {
+		std::cout << "HistoricCSVDataHandler, test " << num_test << ": \t function {update_bars} passed test!" << std::endl;
+		++num_test;
+	}
+	else {
+		std::cout << "HistoricCSVDataHandler, test " << num_test << ": \t function {update_bars} NOT passed test!" << std::endl; 
+	}
+
 }
 
 

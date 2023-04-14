@@ -24,14 +24,10 @@ class t_performance {
 		void t_create_cum_returns();
 		void t_create_pdf_report();
 		void t_HTML_display_report();
-		void t_test_members();
-		void t_calc_mean();
+		void t_test_member();
 
 		// Members
-		std::vector<float> t_returns;
 	
-	private:
-		float calc_mean();
 };
 
 

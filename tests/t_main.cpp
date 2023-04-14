@@ -16,11 +16,19 @@
 
 int main() {
 	// TESTING DATA CLASS
+	std::cout << "Testing the HistoricCSVDataHandler class" << std::endl;
 	t_data testing_data = t_data();
 	testing_data.t_open_convert_csv_file();
 	testing_data.t_get_new_bar();
 	testing_data.t_get_latest_bars();
+	testing_data.t_update_bars();
+	std::cout << "\n" << std::endl;
 
+	// TESTING PERFORMANCE CLASS
+	std::cout << "Testing the Performance class" << std::endl; 
+	t_performance testing_performance = t_performance();
+
+	std::cout << "\n" << std::endl;
 
 	return 0;
 }

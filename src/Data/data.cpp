@@ -98,7 +98,9 @@ void HistoricCSVDataHandler :: update_bars(std::string symbol) {
 		else {
 			struct Bar bar = get_new_bar(symbol_list[i]);
 			latest_symbol_data[symbol_list[i]].push_back(bar);
-		}//self.events.put(MarketEvent())
+		}
+		// todo, fill marketevent with data !!!
+		events.push(MarketEvent());
 	}
 }
 

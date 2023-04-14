@@ -19,7 +19,6 @@ class t_data {
 		void t_get_new_bar();
 		void t_get_latest_bars();
 		void t_update_bars();
-
 		void t_testing_members();
 
 		// Members
