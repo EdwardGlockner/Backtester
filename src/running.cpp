@@ -23,31 +23,38 @@ void backtest(std::queue<Event> events, HistoricCSVDataHandler data, NaivePortfo
 		if (!data.continue_backtest) {
 			running = false;
 		}
+		std::cout << "aaa" << std::endl;
 
 		// need to put events
-		
-		while (true) {
+		bool event_flow = true;	
+		while (event_flow) {
+			std::cout << "eawer" << std::endl;
 			if (events.empty()) {
-				break;
+				event_flow = false;
 			}
 			Event event = events.front();
 			events.pop();
-			if (true) { // check if the event is null or not
-				if (event.type == Event::MARKET_EVENT) {
-					strategy.calculate_signals(&event);	
-					portfolio.update_time_index(event);
-				}
-				else if (event.type == Event::SIGNAL_EVENT) {
-					portfolio.update_signal(&event);
 				
-				}
-				else if (event.type == Event::ORDER_EVENT) {
-					broker.execute_order(&event);
-				
-				}
-				else if (event.type == Event::FILL_EVENT) {
-					portfolio.update_fill(&event);
-				}
+			std::cout << "here" << std::endl;
+			if (event.type == Event::MARKET_EVENT) {
+				strategy.calculate_signals(&event);	
+				portfolio.update_time_index(event);
+				std::cout<< "here1" <<std::endl;
+			}
+			else if (event.type == Event::SIGNAL_EVENT) {
+				portfolio.update_signal(&event);
+				std::cout<< "here1" <<std::endl;
+
+			}
+			else if (event.type == Event::ORDER_EVENT) {
+				broker.execute_order(&event);
+				std::cout<< "here1" <<std::endl;
+
+			}
+			else if (event.type == Event::FILL_EVENT) {
+				portfolio.update_fill(&event);
+				std::cout<< "here1" <<std::endl;
+
 			}
 		}
 		

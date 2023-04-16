@@ -6,7 +6,7 @@
 #define T_PERFORMANCE_H
 
 #include <iostream>
-
+#include <vector>
 #include "../src/Performance/performance.h"
 
 class t_performance {
@@ -25,13 +25,21 @@ class t_performance {
 		void t_create_pdf_report();
 		void t_HTML_display_report();
 		void t_test_members();
-		void t_calc_mean();
 
 		// Members
+		Performance testing;
+		int num_test;
+
 		std::vector<float> t_returns;
+		float t_sharpe_ratio;
+		float t_drawdowns;
+		float t_volatility;
+		float t_stddev;
+		float t_variance;
+		float t_mean;
+		std::vector<float> t_cum_returns;
+
 	
-	private:
-		float calc_mean();
 };
 
 
